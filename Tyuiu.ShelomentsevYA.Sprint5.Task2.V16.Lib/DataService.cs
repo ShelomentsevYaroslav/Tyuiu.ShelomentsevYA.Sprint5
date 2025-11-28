@@ -7,30 +7,28 @@ namespace Tyuiu.ShelomentsevYA.Sprint5.Task2.V16.Lib
         {
 
             string dir = Path.GetTempPath();
-            string file = Path.Combine(dir, "OutPutFileTask2.csv");
+            string path = Path.Combine(dir, "OutPutFileTask2.csv");
 
-            List<string> list = new List<string>();
-
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            using (StreamWriter writer = new StreamWriter(path, false))
             {
-                List<string> row = new List<string>();
-
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                for (int i = 0; i < matrix.GetLength(0); i++)
                 {
-                    int value = matrix[i, j];
-                    value = value > 0 ? 1 : 0;
-                    row.Add(value.ToString());
-                }
+                    List<string> lineValues = new List<string>();
 
-                list.Add(string.Join(";", row));
+                    for (int j = 0; j < matrix.GetLength(1); j++)
+                    {
+                        int value = matrix[i, j] >= 0 ? 1 : 0;
+                        lineValues.Add(value.ToString());
+                    }
+
+                    string line = string.Join(";", lineValues);
+                    writer.Write(line);       // <-- ПИШЕМ БЕЗ \r !!!
+                    if (i < matrix.GetLength(0) - 1)
+                        writer.Write("\n");   // <-- ВСЕГДА ТОЛЬКО \n !!!
+                }
             }
 
-            // ТЕСТ ХОЧЕТ В ОДНУ СТРОКУ
-            string result = string.Join(" ", list);
-
-            File.WriteAllText(file, result);
-
-            return file;
+            return path;
         }
     }
 }

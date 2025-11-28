@@ -11,32 +11,19 @@ namespace Tyuiu.ShelomentsevYA.Sprint5.Task2.V16.Test
         {
             // arrange
             int[,] matrix = new int[,]
-            {
+    {
         { 2, -4, -8 },
         { 3, -7, -2 },
         { 3,  8,  6 }
-            };
+    };
 
             DataService ds = new DataService();
 
-            // act
             string path = ds.SaveToFileTextData(matrix);
 
-            Assert.IsTrue(File.Exists(path));
+            string result = File.ReadAllText(path);
 
-            // читаем содержимое
-            string text = File.ReadAllText(path).Trim();
-
-            // нормализуем переносы
-            text = text.Replace("\r\n", "\n");
-
-            string expected =
-                "1;0;0\n" +
-                "1;0;0\n" +
-                "1;1;1";
-
-            // assert
-            Assert.AreEqual(expected, text);
+            Assert.AreEqual("1;0;0\n1;0;0\n1;1;1", result);
         }
 
     }
