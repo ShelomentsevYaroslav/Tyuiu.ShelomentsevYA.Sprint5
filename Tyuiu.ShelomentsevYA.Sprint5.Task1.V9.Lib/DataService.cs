@@ -13,21 +13,11 @@ namespace Tyuiu.ShelomentsevYA.Sprint5.Task1.V9.Lib
             {
                 for (int x = startValue; x <= stopValue; x++)
                 {
-                    double y;
-
-                    double denominator = 2.0;
-                    if (denominator == 0)
-                    {
-                        y = 0;
-                    }
-                    else
-                    {
-
-                        y = Math.Sin(x) + Math.Cos(2 * x) / denominator - 1.5 * x;
-                    }
+                    double y = Math.Sin(x) + Math.Cos(2 * x) / 2 - 1.5 * x;
 
                     string line = Math.Round(y, 2)
-                        .ToString(CultureInfo.InvariantCulture);
+                        .ToString()          
+                        .Replace('.', ',');  
 
                     writer.WriteLine(line);
                 }
