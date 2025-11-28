@@ -9,7 +9,6 @@ namespace Tyuiu.ShelomentsevYA.Sprint5.Task2.V16.Test
         [TestMethod]
         public void SaveToFileTextData_CorrectValues()
         {
-            // arrange
             int[,] matrix = new int[,]
     {
         { 2, -4, -8 },
