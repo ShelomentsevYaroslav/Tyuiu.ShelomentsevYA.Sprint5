@@ -26,6 +26,8 @@ namespace Tyuiu.ShelomentsevYA.Sprint5.Task5.V23
             DataService ds = new DataService();
             double result = ds.LoadFromDataFile(path);
 
+
+
             Console.WriteLine("***************************************************************************");
             Console.WriteLine("* РЕЗУЛЬТАТ:                                                             *");
             Console.WriteLine("***************************************************************************");
