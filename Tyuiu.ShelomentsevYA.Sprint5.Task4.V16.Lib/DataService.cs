@@ -5,7 +5,7 @@ using tyuiu.cources.programming.interfaces.Sprint5;
 
 namespace Tyuiu.ShelomentsevYA.Sprint5.Task4.V16.Lib
 {
-    public class DataService
+    public class DataService : ISprint5Task4V16
     {
         public double LoadFromDataFile(string path)
         {
