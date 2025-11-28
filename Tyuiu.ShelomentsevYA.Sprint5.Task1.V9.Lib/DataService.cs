@@ -9,26 +9,27 @@ namespace Tyuiu.ShelomentsevYA.Sprint5.Task1.V9.Lib
             string dir = Path.GetTempPath();
             string path = Path.Combine(dir, "OutPutFileTask1.txt");
 
-            using (StreamWriter sw = new StreamWriter(path))
+            using (StreamWriter writer = new StreamWriter(path, false))
             {
                 for (int x = startValue; x <= stopValue; x++)
                 {
-                    double denom = 1.5 * x;
+                    double y;
 
-                    double result;
-
-                    if (denom == 0)
+                    double denominator = 2.0;
+                    if (denominator == 0)
                     {
-                        result = 0;
+                        y = 0;
                     }
                     else
                     {
-                        result = (Math.Sin(x) + Math.Cos(2 * x) / 2) / (1.5 * x);
+
+                        y = Math.Sin(x) + Math.Cos(2 * x) / denominator - 1.5 * x;
                     }
 
-                    result = Math.Round(result, 2);
+                    string line = Math.Round(y, 2)
+                        .ToString(CultureInfo.InvariantCulture);
 
-                    sw.WriteLine(result.ToString(CultureInfo.InvariantCulture));
+                    writer.WriteLine(line);
                 }
             }
 
