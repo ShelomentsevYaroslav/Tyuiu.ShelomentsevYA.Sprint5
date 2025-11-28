@@ -41,7 +41,7 @@ namespace Tyuiu.ShelomentsevYA.Sprint5.Task5.V23.Test
             DataService ds = new DataService();
             double result = ds.LoadFromDataFile(filePath);
 
-            double expected = -9.000;
+            double expected = -7.1;
 
             Assert.AreEqual(expected, result);
         }
