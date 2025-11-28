@@ -18,6 +18,10 @@ namespace Tyuiu.ShelomentsevYA.Sprint5.Task5.V23.Lib
 
             foreach (string part in parts)
             {
+                
+                if (!part.Contains("."))
+                    continue;
+
                 double value = double.Parse(part, CultureInfo.InvariantCulture);
 
                 if (value < min)
