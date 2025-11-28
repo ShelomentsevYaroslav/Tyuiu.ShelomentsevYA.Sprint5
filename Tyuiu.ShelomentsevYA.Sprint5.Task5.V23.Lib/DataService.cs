@@ -9,13 +9,16 @@ namespace Tyuiu.ShelomentsevYA.Sprint5.Task5.V23.Lib
     {
         public double LoadFromDataFile(string path)
         {
-            string[] lines = File.ReadAllLines(path);
+            string raw = File.ReadAllText(path).Trim();
+
+            string[] parts = raw.Split(new char[] { ' ', '\n', '\r', '\t' },
+                                       StringSplitOptions.RemoveEmptyEntries);
 
             double min = double.MaxValue;
 
-            foreach (string line in lines)
+            foreach (string part in parts)
             {
-                double value = double.Parse(line.Trim(), CultureInfo.InvariantCulture);
+                double value = double.Parse(part, CultureInfo.InvariantCulture);
 
                 if (value < min)
                     min = value;
